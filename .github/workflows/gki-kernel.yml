@@ -1,9 +1,9 @@
-name: GKI Kernel Build
+‘name: GKI Kernel Build
 permissions:
   contents: write  # Allow writing to repository contents (for pushing tags)
   actions: write   # Allows triggering actions
 
-on:
+于:
   workflow_call: # This allows this workflow to be called from another workflow
     inputs:
       android_version:
@@ -304,10 +304,10 @@ jobs:
           echo "Changing to configuration directory: $CONFIG..."
           cd "$CONFIG"
 
-          sed -i '$s|echo "\$res"|echo "\$res-Wild+"|' ./common/scripts/setlocalversion
+          sed -i '$s|echo "\$res"|echo "\$xiaoyu"|' ./common/scripts/setlocalversion
 
           # Run perl command to modify UTS_VERSION
-          perl -pi -e 's{UTS_VERSION="\$\(echo \$UTS_VERSION \$CONFIG_FLAGS \$TIMESTAMP \| cut -b -\$UTS_LEN\)"}{UTS_VERSION="#1 SMP PREEMPT Sat Apr 20 04:20:00 UTC 2024"}' ./common/scripts/mkcompile_h
+          perl -pi -e 's{UTS_VERSION="\$\(echo \$UTS_VERSION \$CONFIG_FLAGS \$TIMESTAMP \| cut -b -\$UTS_LEN\)"}{UTS_VERSION="#1 SMP PREEMPT 4月20日，周六04:20:00 UTC 2024"}' ./common/scripts/mkcompile_h
 
           echo "Building the kernel..."
           if [ -f "build/build.sh" ]; then
